@@ -32,7 +32,7 @@ jobs:
         run: |
           pip3 install --no-cache-dir -q 'pipenv==2018.11.26' 
           pipenv install --deploy --system
-          python3 src/app/manage.py test
+          python3 manage.py test
         
       - name: Test case Status
         if: steps.test.outcome == 'failure'
