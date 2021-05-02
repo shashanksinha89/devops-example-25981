@@ -28,6 +28,7 @@ jobs:
       
       - name: Run Tests
         id: test
+        working-directory: src/app
         run: |
           pip3 install --no-cache-dir -q 'pipenv==2018.11.26' 
           pipenv install --deploy --system
