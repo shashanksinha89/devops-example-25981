@@ -26,6 +26,14 @@ jobs:
       
       - uses: hashicorp/setup-terraform@v1
       
+      - name: Run Tests
+        id: test
+        run: python3 src/app/manage.py test
+        
+      - name: Test case Status
+        if: steps.test.outcome == 'failure'
+        run: exit 1
+      
       - name: Terraform Format
         id: fmt
         run: terraform fmt -check
