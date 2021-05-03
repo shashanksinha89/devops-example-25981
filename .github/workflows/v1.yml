@@ -32,6 +32,8 @@ jobs:
           push: false
           
         #run: docker build . --build-arg SECRET_KEY=${{ secrets.SECRET_KEY }} -t test
+      - name: List Docker images
+        run : docker ps
       - name: Unit test
         env:
           SECRET_KEY: ${{ secrets.SECRET_KEY }}
