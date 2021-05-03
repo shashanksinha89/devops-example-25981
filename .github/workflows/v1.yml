@@ -25,9 +25,7 @@ jobs:
           install: true
       - name: docker build
         working-directory: src/app
-        env:
-          SECRET_KEY: ${{ secrets.SECRET_KEY }}
-        run: docker build . -t test
+        run: docker build . --build-arg SECRET_KEY=${{ secrets.SECRET_KEY }} -t test
       - name: Unit test
         env:
           SECRET_KEY: ${{ secrets.SECRET_KEY }}
