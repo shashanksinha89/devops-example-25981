@@ -23,9 +23,15 @@ jobs:
         id: buildx
         with:
           install: true
-      - name: docker build
-        working-directory: src/app
-        run: docker build . --build-arg SECRET_KEY=${{ secrets.SECRET_KEY }} -t test
+    
+      - uses: docker/build-push-action@v2
+        with:
+          context: src/app
+          build-args: SECRET_KEY=${{ secrets.SECRET_KEY }}
+          tags: test:latest
+          push: false
+          
+        #run: docker build . --build-arg SECRET_KEY=${{ secrets.SECRET_KEY }} -t test
       - name: Unit test
         env:
           SECRET_KEY: ${{ secrets.SECRET_KEY }}
