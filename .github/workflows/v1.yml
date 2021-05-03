@@ -29,7 +29,7 @@ jobs:
       - name: Unit test
         env:
           SECRET_KEY: ${{ secrets.SECRET_KEY }}
-        run: docker run --rm -it test python3 manage.py test
+        run: docker run --rm test python3 manage.py test
 
   build:
     needs: test
