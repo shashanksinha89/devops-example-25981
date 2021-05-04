@@ -31,13 +31,15 @@ jobs:
           tags: test:latest
           push: false
           
-        #run: docker build . --build-arg SECRET_KEY=${{ secrets.SECRET_KEY }} -t test
       - name: List Docker images
         run : docker ps
+
       - name: Unit test
-        env:
-          SECRET_KEY: ${{ secrets.SECRET_KEY }}
-        run: docker run --rm test python3 manage.py test
+        uses: addnab/docker-run-action@v3
+        with:
+          options: -e SECRET_KEY=${{ secrets.SECRET_KEY }}
+          image: test:latest
+          run: echo "python3 manage.py test"
 
   build:
     needs: test
