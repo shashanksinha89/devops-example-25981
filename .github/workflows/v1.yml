@@ -31,15 +31,9 @@ jobs:
           tags: test:latest
           load: true
           push: false
-          
-      - name: List Docker images
-        run : |
-          docker images
-          docker image inspect test:latest
+
       - name: Unit test
-        env:
-          SECRET_KEY: ${{ secrets.SECRET_KEY }}
-        run: docker run --rm test:latest python3 manage.py test
+        run: docker run --rm -e SECRET_KEY=${{ secrets.SECRET_KEY }} test:latest python3 manage.py test
 
   build:
     needs: test
