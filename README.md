@@ -72,6 +72,23 @@ There are 2 Actions defined in this repo
 - [Deployment with no unit test](https://github.com/shashanksinha89/devops-example-25981/blob/master/.github/workflows/build-v1.yml)
 
 
+### Terraform Output
+
+```sh
+heroku_build.example: Still creating... [4m10s elapsed]
+heroku_build.example: Still creating... [4m20s elapsed]
+heroku_build.example: Still creating... [4m30s elapsed]
+heroku_build.example: Creation complete after 4m34s [id=74b5d9f5-943e-4040-a96f-84dfe964d983]
+
+Apply complete! Resources: 1 added, 0 changed, 1 destroyed.
+
+Outputs:
+
+app_id = "9b4a5cd9-4ee4-42d3-8476-20f7a9fc3bee"
+app_name = "shashank123456789"
+app_url = "https://shashank123456789.herokuapp.com"
+```
+
 ## Running Terraform Deployment locally
 
 ### Steps
