@@ -29,17 +29,17 @@ jobs:
           context: src/app
           build-args: SECRET_KEY=${{ secrets.SECRET_KEY }}
           tags: test:latest
+          load: true
           push: false
           
       - name: List Docker images
-        run : docker ps
-
+        run : |
+          docker images
+          docker image inspect test:latest
       - name: Unit test
-        uses: addnab/docker-run-action@v3
-        with:
-          options: -e SECRET_KEY=${{ secrets.SECRET_KEY }}
-          image: test:latest
-          run: echo "python3 manage.py test"
+        env:
+          SECRET_KEY: ${{ secrets.SECRET_KEY }}
+        run: docker run --rm test:latest python3 manage.py test
 
   build:
     needs: test
