@@ -99,3 +99,5 @@ app_url = "https://shashank123456789.herokuapp.com"
 4. terraform init -backend-config="conn_str=$DATABASE_URL"
 5. terraform plan -out plan
 6. terraform apply plan
+
+
