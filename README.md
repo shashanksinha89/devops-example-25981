@@ -95,7 +95,7 @@ app_url = "https://shashank123456789.herokuapp.com"
 
 1. export `HEROKU_API_KEY`=`<TOKEN>`
 2. export `HEROKU_EMAIL`
-3. export `DATABASE_URL`=`heroku config:get DATABASE_URL --app $APP_NAME`
+3. export `DATABASE_URL`=`$(heroku config:get DATABASE_URL --app $APP_NAME)`
 4. terraform init -backend-config="conn_str=$DATABASE_URL"
 5. terraform plan -out plan
 6. terraform apply plan
