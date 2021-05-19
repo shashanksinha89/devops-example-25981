@@ -44,6 +44,12 @@ resource "heroku_addon" "redis" {
   depends_on = [heroku_app.example]
 }
 
+resource "heroku_addon" "scheduler" {
+  app        = heroku_app.example.name
+  plan       = "heroku-scheduler:dev"
+  depends_on = [heroku_app.example]
+}
+
 # Build code & release to the app
 resource "heroku_build" "example" {
   app = heroku_app.example.name
