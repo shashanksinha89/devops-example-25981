@@ -46,7 +46,7 @@ resource "heroku_addon" "redis" {
 
 resource "heroku_addon" "scheduler" {
   app        = heroku_app.example.name
-  plan       = "heroku-scheduler:dev"
+  plan       = "heroku-scheduler:standard"
   depends_on = [heroku_app.example]
 }
 
