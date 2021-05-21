@@ -1,0 +1,27 @@
+name: Release
+
+on:
+  workflow_dispatch:
+
+jobs:
+
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+        with: 
+          ref: master
+
+      - name: Initialize packages
+        run: |
+        apt update
+        apt install jo git -y
+
+      - name: Generate Json data
+        run: jo -p -- -s tag_name="$(date '+%Y%m%d'.1)" name="Production Release" body="$(git log --oneline --no-decorate HEAD...$(git tag -l '202[0-9]????.*' --sort=-v:refname | head -n 1))" > data.json
+      
+      - name: Perform Release
+        run: curl  -i -X POST -H "Content-Type:application/json" -H "Authorization:token ${{ secrets.TOKEN }} " https://api.github.com/repos/shashanksinha89/devops-example-25981/releases -d @data.json
+
+  
