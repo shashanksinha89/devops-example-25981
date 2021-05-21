@@ -23,6 +23,7 @@ jobs:
           ls -l 
           jo -p -- -s tag_name="$(date '+%Y%m%d'.1)" name="Production Release" body="$(git log --oneline --no-decorate HEAD...$(git tag -l '202[0-9]????.*' --sort=-v:refname | head -n 1))" > data.json
           cat data.json
+          curl   -H "Accept: application/vnd.github.v3+json"   https://api.github.com/repos/shashanksinha89/devops-example-25981/releases
       
       - name: Perform Release
         run: |
