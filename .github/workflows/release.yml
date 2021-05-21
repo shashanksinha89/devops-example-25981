@@ -27,6 +27,6 @@ jobs:
       - name: Perform Release
         run: |
           cat data.json
-          curl  -i -X POST -H "Content-Type:application/json" -H "Authorization:token ${{ secrets.TOKEN }} " https://api.github.com/repos/shashanksinha89/devops-example-25981/releases -d @data.json
+          curl  -i -X POST -H "Content-Type:application/json" -H "Authorization:token ${{ secrets.TOKEN }} " https://api.github.com/repos/shashanksinha89/$GITHUB_REPOSITORY/releases -d @data.json
 
   
