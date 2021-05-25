@@ -18,14 +18,16 @@ jobs:
           git clone https://github.com/shashanksinha89/devops-example-25981.git
 
       - name: Generate Json data
+        working-directory: ./devops-example-25981
         run: |
           git config --list
           git describe --tags --abbrev=0
-          echo jo -p -- -s tag_name="$(date '+%Y%m%d'.1)" name="Production Release" body="$(git log --oneline --no-decorate HEAD...$(git tag -l '202[0-9]????.*' --sort=-v:refname | head -n 1))"
+          jo -p -- -s tag_name="$(date '+%Y%m%d'.1)" name="Production Release" body="$(git log --oneline --no-decorate HEAD...$(git tag -l '202[0-9]????.*' --sort=-v:refname | head -n 1))"
           jo last_tag=$(git describe --tags --abbrev=0)
           cat data.json
       
       - name: Perform Release
+        working-directory: ./devops-example-25981
         run: |
           cat data.json
           echo curl  -i -X POST -H "Content-Type:application/json" -H "Authorization:token ${{ secrets.TOKEN }}" "https://api.github.com/repos/shashanksinha89/$GITHUB_REPOSITORY/releases" -d @data.json
