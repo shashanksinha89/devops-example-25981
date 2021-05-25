@@ -22,10 +22,10 @@ jobs:
         run: |
           ls -l 
           echo alias last_tag='"git tag -l '202[0-9]????.*' --sort=-v:refname | head -n 1"' >> ~/.bashrc
-          echo alias changes='"git log --oneline --no-decorate HEAD...\$(last_tag)"' >> ~/.bashrc
+          echo alias changes='"git log --oneline --no-decorate HEAD...$(last_tag)"' >> ~/.bashrc
           source ~/.bashrc
           cat ~/.bashrc
-          jo -p -- -s tag_name="$(date '+%Y%m%d'.1)" name="Production Release" body="$(changes) > data.json
+          jo -p -- -s tag_name="$(date '+%Y%m%d'.1)" name="Production Release" body="$(changes)" > data.json
           cat data.json
       
       - name: Perform Release
