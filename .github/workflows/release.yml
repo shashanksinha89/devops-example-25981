@@ -18,7 +18,7 @@ jobs:
 
       - name: Checkout 
         run: |
-          git clone https://github.com/crowdbotics/crowdbotics-slack-app.git 
+          git clone https://${{ secrets.TOKEN }}@github.com/crowdbotics/crowdbotics-slack-app.git 
 
       - name: Generate Json data
         working-directory: ${{ env.working-directory }}
