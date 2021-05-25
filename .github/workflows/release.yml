@@ -8,7 +8,7 @@ jobs:
   build:
     runs-on: ubuntu-latest
     env: 
-      working-directory: ./devops-example-25981
+      working-directory: ./crowdbotics-slack-app
 
     steps:
       - name: Initialize packages
@@ -18,7 +18,7 @@ jobs:
 
       - name: Checkout 
         run: |
-          git clone https://github.com/shashanksinha89/devops-example-25981.git
+          git clone https://github.com/crowdbotics/crowdbotics-slack-app.git 
 
       - name: Generate Json data
         working-directory: ${{ env.working-directory }}
