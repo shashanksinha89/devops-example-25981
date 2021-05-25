@@ -30,7 +30,6 @@ jobs:
         working-directory: ./devops-example-25981
         run: |
           cat data.json
-          echo curl  -i -X POST -H "Content-Type:application/json" -H "Authorization:token ${{ secrets.TOKEN }}" "https://api.github.com/repos/shashanksinha89/$GITHUB_REPOSITORY/releases" -d @data.json
-          curl  -i -X POST -H "Content-Type:application/json" -H "Authorization:token ${{ secrets.TOKEN }}" "https://api.github.com/repos/shashanksinha89/$GITHUB_REPOSITORY/releases" -d @data.json
+          curl  -i -X POST -H "Content-Type:application/json" -H "Authorization:token ${{ secrets.TOKEN }}" "https://api.github.com/repos/$GITHUB_REPOSITORY/releases" -d @data.json
 
   
