@@ -25,6 +25,7 @@ jobs:
           echo alias changes='"git log --oneline --no-decorate HEAD...$(last_tag)"' >> ~/.bashrc
           source ~/.bashrc
           cat ~/.bashrc
+          echo jo -p -- -s tag_name="$(date '+%Y%m%d'.1)" name="Production Release" body="$(changes)" > data.json
           jo -p -- -s tag_name="$(date '+%Y%m%d'.1)" name="Production Release" body="$(changes)" > data.json
           cat data.json
       
